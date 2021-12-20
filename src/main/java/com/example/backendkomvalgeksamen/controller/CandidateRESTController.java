@@ -22,7 +22,7 @@ public class CandidateRESTController {
 
     //Hent alle Candidat
     @GetMapping("/candidate")
-    public List<Candidate> allBoxes(){
+    public List<Candidate> allCandidates(){
         return candidateRepository.findAll();
     }
 
