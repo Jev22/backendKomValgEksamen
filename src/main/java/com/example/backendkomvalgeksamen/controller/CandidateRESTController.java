@@ -60,7 +60,7 @@ public class CandidateRESTController {
 /* ----- Put ----- */
 
     @PutMapping("/candidate/{candidate_id}")
-    public ResponseEntity<Candidate> updateBox(@PathVariable int candidate_id, @RequestBody Candidate candidate){
+    public ResponseEntity<Candidate> updateCandidate(@PathVariable int candidate_id, @RequestBody Candidate candidate){
         Optional<Candidate> candidateData = candidateRepository.findById(candidate_id);
         if (candidateData.isPresent()) {
             Candidate _candidate = candidateData.get();

@@ -47,33 +47,7 @@ public class PoliticalPartyRESTController {
     }
 
 
-    // ----- Put -----
 
-    @PutMapping("/politicalParty/{politicalParty_id}")
-    public ResponseEntity<PoliticalParty> updateBox(@PathVariable int politicalParty_id, @RequestBody PoliticalParty politicalParty){
-        Optional<PoliticalParty> politicalPartyData = candidateRepository.findById(politicalParty_id);
-        if (candidateData.isPresent()) {
-            Candidate _candidate = candidateData.get();
-            _candidate.setCandidateName(candidate.getCandidateName());
-            _candidate.setNumberOfVotes(candidate.getNumberOfVotes());
-            _candidate.setPoliticalParty(candidate.getPoliticalParty());
-            _candidate = candidateRepository.save(_candidate);
-            return new ResponseEntity<>(_candidate, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    // ----- Delete -----
-
-    @DeleteMapping("/candidate/{id}")
-    public ResponseEntity<Object> deleteCandidate(@PathVariable int id) {
-        try {
-            candidateRepository.deleteById(id);
-        } catch (Exception err) {
-            return new ResponseEntity<>("Kandidaten blev ikke fundet", HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
 */
