@@ -2,6 +2,8 @@ package com.example.backendkomvalgeksamen.controller;
 
 
 import com.example.backendkomvalgeksamen.model.Candidate;
+import com.example.backendkomvalgeksamen.model.PoliticalParty;
+import com.example.backendkomvalgeksamen.repository.PoliticalPartyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ public class CandidateRESTController {
 
     @Autowired
     CandidateRepository candidateRepository;
+    @Autowired
+    PoliticalPartyRepository politicalPartyRepository;
 
 /* ----- Get liste -----*/
 
@@ -26,7 +30,7 @@ public class CandidateRESTController {
         return candidateRepository.findAll();
     }
 
-    @GetMapping ("/candidate/{id}")
+    @GetMapping ("/oneCandidate/{id}")
     public Candidate getCandidateById(@PathVariable int id){
         Optional<Candidate> obj = candidateRepository.findById(id);
         if (obj.isPresent()) {
@@ -35,6 +39,13 @@ public class CandidateRESTController {
         Candidate candidate = new Candidate();
         candidate.setCandidateName("Not Found");
         return candidate;
+    }
+
+    @GetMapping("candidate/{partyid}")
+    public List<Candidate> findCandidatesByPartyId(@PathVariable int partyid){
+        Optional<PoliticalParty> PoliticalPartyData = politicalPartyRepository.findById(partyid);
+        PoliticalParty _politicalParty = PoliticalPartyData.get();
+        return candidateRepository.findAllBypoliticalParty(_politicalParty);
     }
 
 /* ----- Post liste ----- */
