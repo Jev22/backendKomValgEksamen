@@ -12,7 +12,7 @@ public class PoliticalParty {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name ="party_id")
     private int partyId;
 
     @Column(name ="party_name")
@@ -31,15 +31,6 @@ public class PoliticalParty {
     public PoliticalParty() {
     }
 
-    public PoliticalParty(int partyId,
-                          String partyName,
-                          int numberOfVotes,
-                          Set<Candidate> candidates) {
-        this.partyId = partyId;
-        this.partyName = partyName;
-        this.numberOfVotes = numberOfVotes;
-        this.candidates = candidates;
-    }
 
     public int getPartyId() {
         return partyId;
